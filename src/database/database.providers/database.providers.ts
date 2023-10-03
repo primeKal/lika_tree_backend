@@ -8,15 +8,19 @@ export const databaseProviders = [
     provide: 'SEQUELIZE',
     useFactory: async () => {
       const sequelize = new Sequelize({
-        dialect: 'mysql',
-        host: 'localhost',
-        port: 3306,
-        username: 'linktreeadmin',
-        password: '12345',
-        database: 'linktree',
+        dialect: 'postgres',
+        host: 'ep-mute-violet-76705724.us-east-1.postgres.vercel-storage.com',
+        port: 5432,
+        username: 'default',
+        password: 'pTv75EHAJIws',
+        database: 'trendy_merches',
+        ssl: true,
+        dialectOptions: {
+          ssl: true
+        }
       });
       sequelize.addModels([User, Socialmedia]);
-      await sequelize.sync();
+      await sequelize.sync({alter: true});
       return sequelize;
     },
   },
