@@ -20,7 +20,7 @@ export const databaseProviders = [
         }
       });
       sequelize.addModels([User, Socialmedia]);
-      await sequelize.sync({alter: true});
+      await sequelize.sync();
       return sequelize;
     },
   },
